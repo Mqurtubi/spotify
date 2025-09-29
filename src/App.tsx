@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './App.css'
-import { getValidToken, getArtistRelated, getArtistTopTracks } from './api/index'
+import { getValidToken, getSeveralCategories, getCategories } from './api/index'
 function App() {
   useEffect(()=>{
     async function init() {
@@ -10,8 +10,10 @@ function App() {
       }
 
       try {
-        const topTracks = await getArtistRelated("0TnOYISbd1XYRBk9myaseg")
-        console.log(topTracks)
+        const severalCategories = await getSeveralCategories()
+        const categories = await getCategories("dinner")
+        console.log(severalCategories)
+        console.log(categories)
       } catch (error) {
         console.log(error)
       }
