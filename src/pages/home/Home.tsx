@@ -1,7 +1,8 @@
+import Hero from "./components/Hero";
 export default function Home() {
   return (
-    <div className="h-screen">
-      <p>hello</p>
+    <div className="relative top-16 h-screen">
+      <Hero />
     </div>
   );
 }
