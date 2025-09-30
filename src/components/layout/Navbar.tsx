@@ -14,7 +14,7 @@ export default function Navbar() {
   };
   return (
     <div>
-      <div className="flex items-center justify-between bg-slate-900 text-white px-5 py-4 fixed top-0 left-0 right-0 z-99 border-b-4 border-slate-800">
+      <div className="flex items-center justify-between bg-slate-900 text-white px-5 py-4 fixed top-0 left-0 right-0 z-99 border-b-4 border-slate-800 backdrop-blur-md">
         <Logo />
         <div className="md:hidden">
           {!open ? (
