@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 export default function Hero() {
   return (
     <div className="bg-radial-[at_40%_50%] from-cyan-800 via-slate-800  to-85% text-white flex flex-col items-center space-y-5 px-5 py-10">
