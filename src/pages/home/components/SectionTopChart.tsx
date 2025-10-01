@@ -4,7 +4,9 @@ export default function SectionTopChart() {
   return (
     <div className="mx-5">
       <TitleSection Icon={PiChartLineUpLight} label="Top Album" />
-      <div></div>
+      <div>
+        <div></div>
+      </div>
     </div>
   );
 }
