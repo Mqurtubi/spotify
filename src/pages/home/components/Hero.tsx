@@ -15,7 +15,18 @@ export default function Hero() {
           playlists powered by Spotify's vast music library.
         </p>
       </div>
-      <div></div>
+      <div className="flex flex-col w-full text-center space-y-5 sm:flex-row sm:space-y-0 justify-center space-x-5">
+        <NavLink
+          className={`bg-gradient-to-r from-cyan-500 to-slate-700 to-99% py-2 rounded-2xl text-slate-950 hover:-translate-y-1 transition-all duration-200  hover:shadow-cyan-500/50 hover:shadow-lg sm:w-1/2 md:w-1/5`}
+        >
+          Start Music
+        </NavLink>
+        <NavLink
+          className={`border border-slate-400 py-2 rounded-2xl hover:opacity-70 transition-all duration-300 ease-in-out sm:w-1/2 md:w-1/5`}
+        >
+          Browse Music
+        </NavLink>
+      </div>
     </div>
   );
 }
