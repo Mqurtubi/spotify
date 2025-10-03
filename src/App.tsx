@@ -4,11 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/home/Home";
-import {
-  getPlaylistTopIndo,
-  getPlaylistFeatured,
-  getPlaylistTopGlobal,
-} from "./api/index";
+
 function App() {
   useEffect(() => {
     async function init() {
@@ -16,12 +12,6 @@ function App() {
       if (!token) {
         return;
       }
-      const playlist = await getPlaylistFeatured();
-      const topPlalist = await getPlaylistTopIndo();
-      const playlistGlobal = await getPlaylistTopGlobal();
-      console.log(playlistGlobal);
-      console.log(topPlalist);
-      console.log(playlist);
     }
     init();
   }, []);

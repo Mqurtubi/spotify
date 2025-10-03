@@ -1,105 +1,119 @@
 //types untuk response token
-interface SpotifyAuthResponse{
-    access_token:string,
-    token_type:string,
-    expires_in:number
+interface SpotifyAuthResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
 }
 
 //types untuk route album
-interface SpotifySeveralAlbum{
-    albums:SpotifyAlbum[]
+interface SpotifySeveralAlbum {
+  albums: SpotifyAlbum[];
 }
 
-interface SpotifyAlbum{
-    total_tracks:number,
-    href:string,
-    id:string,
-    images:images[],
-    name:string,
-    release_date:string,
-    artists:artists[],
-    tracks:tracks,
-    genres:string[],
-    label:string,
-    popularity:number
+interface SpotifyAlbum {
+  total_tracks: number;
+  href: string;
+  id: string;
+  images: images[];
+  name: string;
+  release_date: string;
+  artists: artists[];
+  tracks: tracks;
+  genres: string[];
+  label: string;
+  popularity: number;
 }
 
 //types untuk route artist
-interface SpotifySeveralArtist{
-    artists:SpotifyArtist[]
+interface SpotifySeveralArtist {
+  artists: SpotifyArtist[];
 }
 
-interface SpotifyArtist{
-    followers:{
-        href:string,
-        total:number
-    },
-    genres:string[],
-    href:string,
-    id:string,
-    images:images[],
-    name:string,
-    popularity:string,
-    type:string
+interface SpotifyArtist {
+  followers: {
+    href: string;
+    total: number;
+  };
+  genres: string[];
+  href: string;
+  id: string;
+  images: images[];
+  name: string;
+  popularity: string;
+  type: string;
 }
 
-interface SpotifyArtistAlbum{
-    href:string,
-    limit:number,
-    next:string,
-    offset:number,
-    previous:string,
-    total:number,
-    items:itemsAlbum[],
+interface SpotifyArtistAlbum {
+  href: string;
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
+  items: itemsAlbum[];
 }
 
-interface SpotiftArtistsTopTracks{
-    tracks:tracks[]
+interface SpotiftArtistsTopTracks {
+  tracks: tracks[];
 }
 
-interface tracks{
-    href:string,
-    limit:number,
-    next:string,
-    offset:number,
-    previous:string,
-    total:number,
-    items:items[],
+//types untuk route playlist
+interface SpotifyPlaylist {
+  href: string;
+  name: string;
+  images: { url: string }[];
+  tracks: { total: number };
 }
 
-interface items{
-    artists:artists[],
-    duration_ms:number,
-    href:string,
-    id:string,
-    is_playable:boolean,
-    name:string,
+interface tracks {
+  href: string;
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
+  items: items[];
 }
 
-interface itemsAlbum{
-    total_tracks:string,
-    href:string,
-    id:string,
-    images:images[],
-    name:string,
-    release_date:string,
-    type:string,
-    artists:artists[]
+interface items {
+  artists: artists[];
+  duration_ms: number;
+  href: string;
+  id: string;
+  is_playable: boolean;
+  name: string;
 }
 
-interface images{
-    url:string,
-    height:number
-    width:number
+interface itemsAlbum {
+  total_tracks: string;
+  href: string;
+  id: string;
+  images: images[];
+  name: string;
+  release_date: string;
+  type: string;
+  artists: artists[];
 }
 
-interface artists{
-    href:string,
-    id:string,
-    name:string,
-    type:string
+interface images {
+  url: string;
 }
 
+interface artists {
+  href: string;
+  id: string;
+  name: string;
+  type: string;
+}
 
-
-export type {SpotifyAuthResponse,SpotifyAlbum,SpotifySeveralAlbum, tracks, SpotifyArtist, SpotifySeveralArtist, SpotifyArtistAlbum, SpotiftArtistsTopTracks}
+export type {
+  SpotifyAuthResponse,
+  SpotifyAlbum,
+  SpotifySeveralAlbum,
+  tracks,
+  SpotifyArtist,
+  SpotifySeveralArtist,
+  SpotifyArtistAlbum,
+  SpotiftArtistsTopTracks,
+  SpotifyPlaylist,
+};

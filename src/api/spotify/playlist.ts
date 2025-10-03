@@ -18,7 +18,7 @@ async function getPlaylistTopGlobal() {
   try {
     const res = await spotifyApi.get(`/search`, {
       params: {
-        q: "top 50 global",
+        q: "best playlist world",
         type: "playlist",
       },
     });
