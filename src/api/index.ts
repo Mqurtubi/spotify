@@ -5,4 +5,5 @@ export * from "./spotify/artists";
 export * from "./spotify/search";
 export * from "./spotify/category";
 export * from "./spotify/playlist";
+export * from "./spotify/auth";
 export { default as spotifyApi } from "./axiosInstances";
