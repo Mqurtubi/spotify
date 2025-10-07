@@ -19,7 +19,7 @@ function App() {
     <div className="bg-slate-900">
       <Navbar />
       <Routes>
-        <Route element={<Home />} path="/" />
+        <Route element={<Home />} path={"/"} />
         <Route element={<Callback />} path="/callback" />
       </Routes>
       <Footer />

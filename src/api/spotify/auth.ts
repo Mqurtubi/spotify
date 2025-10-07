@@ -21,8 +21,36 @@ export async function getTokenAuth(code: string | null) {
   }
 }
 
+export async function getValidTokenAuth() {
+  const access_token = localStorage.getItem("access_token");
+  const expire_token = localStorage.getItem("expire_token_auth");
+  if (access_token && Date.now < expire_token) {
+    return access_token;
+  }
+  return await getRefreshTokenAuth();
+}
+
+export async function getRefreshTokenAuth() {
+  const refreshToken = localStorage.getItem("refresh_token");
+  if (!refreshToken) return null;
+  try {
+    const res = await axios.get(
+      `http://127.0.0.1:3001/auth/refresh?refresh_token=${refreshToken}`
+    );
+    const { access_token, expires_in } = res.data;
+    localStorage.setItem("access_token", access_token);
+    const expire = Date.now() + expires_in * 1000;
+    localStorage.setItem("spotify_token_expire_auth", expire.toString());
+    return access_token;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getUserProfile(accessToken: string) {
-  const res = await apiClient.get(`/me?access_token=${accessToken}`);
+  const res = await axios.get(
+    `http://127.0.0.1:3001/auth/me?access_token=${accessToken}`
+  );
   return res.data;
 }
 

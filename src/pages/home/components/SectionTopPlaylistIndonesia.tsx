@@ -25,7 +25,9 @@ export default function SectionTopPlaylistIndonesia() {
         {loading ? (
           <p className="text-gray-400">Loading playlists...</p>
         ) : (
-          playlist.slice(0, 4).map((item) => <ItemsAlbum items={item} />)
+          playlist
+            .slice(0, 4)
+            .map((item, index) => <ItemsAlbum items={item} key={index} />)
         )}
       </div>
     </div>
