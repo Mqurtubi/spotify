@@ -6,21 +6,24 @@ export default function Callback() {
   const navigate = useNavigate();
   useEffect(() => {
     const code = params.get("code");
+
     if (!code) {
-      navigate("/");
+      navigate("/", { replace: true });
+      window.location.reload();
       return;
     }
-    getTokenAuth(code).then((res) => {
-      if (res?.access_token) {
-        localStorage.setItem("access_token", res.access_token);
-        localStorage.setItem("refresh_token", res.refresh_token);
-        const expired = res.expires_in + Date.now() * 1000;
-        localStorage.setItem("spotify_token_expire_auth", expired);
+    const fetchData = async () => {
+      try {
+        await getTokenAuth(code);
         navigate("/", { replace: true });
-      } else {
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
         navigate("/", { replace: true });
+        window.location.reload();
       }
-    });
+    };
+    fetchData();
   }, []);
   return <div></div>;
 }
