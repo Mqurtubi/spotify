@@ -47,10 +47,10 @@ export async function getRefreshTokenAuth() {
   }
 }
 
-export async function getUserProfile(accessToken: string) {
-  const res = await axios.get(
-    `http://127.0.0.1:3001/auth/me?access_token=${accessToken}`
-  );
+export async function getUserProfile() {
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me`, {
+    withCredentials: true,
+  });
   return res.data;
 }
 
