@@ -5,30 +5,27 @@ import { NavLink } from "react-router-dom";
 import { login } from "../../api";
 import Logo from "../ui/Logo";
 import menu from "./menu";
-import axios from "axios";
-
+import { useAuthProfile } from "../../store/useAuthProfile";
+import { defaultProfile } from "../../utils/defaultProfile";
+import { logout } from "../../api";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [auth, setAuth] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false)
+  const {fetchProfile,profile,authProfile} = useAuthProfile()
   const handleClick = () => {
     setOpen(!open);
-    console.log(open);
   };
 
+  const handleClickProfile = () => {
+    setOpenProfile(!openProfile)
+  }
+
+  
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const res = await axios.get("http://127.0.0.1:3001/auth/me", {
-          withCredentials: true,
-        });
-        setAuth(true);
-        console.log(res.data);
-      } catch (error) {
-        console.log(error);
-        setAuth(false);
-      }
-    };
-    fetchProfile();
+    const data = async ()=>{
+      await fetchProfile()
+    }
+    data()
   }, []);
   return (
     <div>
@@ -51,16 +48,31 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex space-x-5 items-center">
-          {!auth ? (
-            <button
+          {!authProfile?
+            (<button
               className="bg-cyan-400 py-2 px-3 text-sm font-semibold rounded-xl text-slate-950 hover:-translate-y-1 transition-all duration-200  hover:shadow-cyan-500/50 hover:shadow-lg hover:cursor-pointer"
               onClick={login}
             >
               Connect Spotify
             </button>
-          ) : (
-            <p>hello</p>
-          )}
+          ):(
+            <div className="relative" onClick={handleClickProfile}>
+              <div className="w-11 h-11 rounded-full bg-amber-800 text-center hover:cursor-pointer">
+                {
+                  profile.images.length == 0 ?(
+                    <p className="pt-1 text-2xl">{defaultProfile(profile.display_name)}</p>
+                  ):(<img src={profile.images.url} />)
+                }
+              </div>
+              <div className={`absolute bg-slate-800 -left-14 mt-2 ${openProfile ? "block":"hidden"}`} >
+                <ul className="space-y-3 pl-5 pr-13 py-3 flex flex-col">
+                  <button onClick={logout}>logout</button>
+                  <li>profile</li>
+                </ul>
+              </div>
+            </div>
+          )
+          }
 
           <div className="md:hidden">
             {!open ? (

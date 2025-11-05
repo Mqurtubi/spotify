@@ -3,7 +3,9 @@ import axios from "axios";
 export function login() {
   window.location.href = `${apiClient.defaults.baseURL}/login`;
 }
-
+export function logout(){
+  window.location.href = `${apiClient.defaults.baseURL}/logout`
+}
 export async function getTokenAuth(code: string | null) {
   if (!code) return null;
 
