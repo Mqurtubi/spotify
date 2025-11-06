@@ -64,8 +64,22 @@ export async function getPlaylistUser() {
 }
 
 export async function getPlayerUser() {
-  const res = await axios.get(`http://127.0.0.1:3001/auth/me/player`,{
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me/player`, {
     withCredentials: true,
-  })
+  });
+  return res.data;
+}
+
+export async function getTopArtistsUser() {
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me/top/artists`, {
+    withCredentials: true,
+  });
+  return res.data;
+}
+
+export async function getTopTracksUser() {
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me/top/tracks`, {
+    withCredentials: true,
+  });
   return res.data;
 }
