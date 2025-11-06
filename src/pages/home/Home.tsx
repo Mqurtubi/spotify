@@ -3,8 +3,8 @@ import SectionTopPlaylistIndonesia from "./components/SectionTopPlaylistIndonesi
 import SectionTopPlaylistGlobal from "./components/SectionTopPlaylistGlobal";
 import {
   getUserProfile,
-  getRefreshTokenAuth,
   getPlaylistUser,
+  getPlayerUser 
 } from "../../api";
 import { useEffect, useState } from "react";
 export default function Home() {
@@ -13,9 +13,11 @@ export default function Home() {
     async function init() {
       const profile = await getUserProfile();
       const playlist = await getPlaylistUser();
+      const player = await getPlayerUser()
       if (profile) {
         console.log(profile);
         console.log(playlist);
+        console.log(player)
         return;
       }
       return console.log("data tidak ada");

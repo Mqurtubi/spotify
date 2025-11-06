@@ -17,7 +17,7 @@ export async function getTokenAuth(code: string | null) {
 
     console.log("Backend response:", res.data);
     return res.data;
-  } catch (err: any) {
+  } catch (err: object) {
     console.error("getTokenAuth error:", err.response?.data || err.message);
     return null;
   }
@@ -60,5 +60,12 @@ export async function getPlaylistUser() {
   const res = await axios.get(`http://127.0.0.1:3001/auth/me/playlists`, {
     withCredentials: true,
   });
+  return res.data;
+}
+
+export async function getPlayerUser() {
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me/player`,{
+    withCredentials: true,
+  })
   return res.data;
 }
