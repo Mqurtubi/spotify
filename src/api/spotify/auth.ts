@@ -3,8 +3,8 @@ import axios from "axios";
 export function login() {
   window.location.href = `${apiClient.defaults.baseURL}/login`;
 }
-export function logout(){
-  window.location.href = `${apiClient.defaults.baseURL}/logout`
+export function logout() {
+  window.location.href = `${apiClient.defaults.baseURL}/logout`;
 }
 export async function getTokenAuth(code: string | null) {
   if (!code) return null;
@@ -56,7 +56,9 @@ export async function getUserProfile() {
   return res.data;
 }
 
-export async function name(accessToken: string) {
-  const res = await apiClient.get(`/me/playlists?access_token=${accessToken}`);
+export async function getPlaylistUser() {
+  const res = await axios.get(`http://127.0.0.1:3001/auth/me/playlists`, {
+    withCredentials: true,
+  });
   return res.data;
 }
