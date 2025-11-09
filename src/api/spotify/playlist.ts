@@ -1,3 +1,4 @@
+import axios from "axios";
 import spotifyApi from "../axiosInstances";
 
 async function getPlaylistTopIndo() {
@@ -28,13 +29,4 @@ async function getPlaylistTopGlobal() {
   }
 }
 
-async function getPlaylistFeatured() {
-  try {
-    const res = await spotifyApi.get(`/browse/featured-playlists`);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export { getPlaylistTopIndo, getPlaylistTopGlobal, getPlaylistFeatured };
+export { getPlaylistTopIndo, getPlaylistTopGlobal };

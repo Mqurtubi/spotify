@@ -22,12 +22,12 @@ export default function SectionTopPlaylistGlobal() {
   return (
     <div className="m-5 space-y-5">
       <TitleSection Icon={RiPlayListLine} label="Top Playlist Global" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {loading ? (
           <p className="text-gray-400">Loading playlists...</p>
         ) : (
           playlist
-            .slice(0, 4)
+            .slice(0, 5)
             .map((item, index) => <ItemsAlbum items={item} key={index} />)
         )}
       </div>

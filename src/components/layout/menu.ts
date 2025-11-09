@@ -1,15 +1,21 @@
+import { IoHomeOutline, IoLibrary } from "react-icons/io5";
+import { CiSearch } from "react-icons/ci";
+
 const menu = [
   {
     label: "Home",
     href: "/",
+    Icon: IoHomeOutline,
   },
   {
-    label: "Browse",
-    href: "/browse",
+    label: "Search",
+    href: "/search",
+    Icon: CiSearch,
   },
   {
-    label: "Albums",
-    href: "/albums",
+    label: "library",
+    href: "/library",
+    Icon: IoLibrary,
   },
 ];
 

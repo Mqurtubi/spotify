@@ -7,8 +7,10 @@ import {
   getPlayerUser,
   getTopArtistsUser,
   getTopTracksUser,
+  getArtistRelated,
 } from "../../api";
 import { useEffect, useState } from "react";
+import SectionTopArtistsUser from "./components/SectionTopArtistsUser";
 export default function Home() {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
@@ -18,12 +20,12 @@ export default function Home() {
       const player = await getPlayerUser();
       const topArtist = await getTopArtistsUser();
       const topTrack = await getTopTracksUser();
+      const artistRelated = await getArtistRelated();
+
+      console.log(artistRelated);
       if (profile) {
-        console.log(profile);
-        console.log(playlist);
-        console.log(player);
         console.log(topArtist);
-        console.log(topTrack);
+        setAuth(true);
         return;
       }
       return console.log("data tidak ada");
@@ -31,10 +33,11 @@ export default function Home() {
     init();
   }, []);
   return (
-    <div className="">
+    <div className="md:ml-60 ">
       <Hero />
       <SectionTopPlaylistIndonesia />
       <SectionTopPlaylistGlobal />
+      {auth && <SectionTopArtistsUser />}
     </div>
   );
 }
