@@ -5,12 +5,11 @@ import {
   getUserProfile,
   getPlaylistUser,
   getPlayerUser,
-  getTopArtistsUser,
   getTopTracksUser,
-  getArtistRelated,
 } from "../../api";
 import { useEffect, useState } from "react";
 import SectionTopArtistsUser from "./components/SectionTopArtistsUser";
+import SectionTopTrackUser from "./components/SectionTopTrackUser";
 export default function Home() {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
@@ -18,13 +17,8 @@ export default function Home() {
       const profile = await getUserProfile();
       const playlist = await getPlaylistUser();
       const player = await getPlayerUser();
-      const topArtist = await getTopArtistsUser();
-      const topTrack = await getTopTracksUser();
-      const artistRelated = await getArtistRelated();
-
-      console.log(artistRelated);
       if (profile) {
-        console.log(topArtist);
+        console.log(playlist);
         setAuth(true);
         return;
       }
@@ -37,7 +31,12 @@ export default function Home() {
       <Hero />
       <SectionTopPlaylistIndonesia />
       <SectionTopPlaylistGlobal />
-      {auth && <SectionTopArtistsUser />}
+      {auth && (
+        <>
+          <SectionTopArtistsUser />
+          <SectionTopTrackUser />
+        </>
+      )}
     </div>
   );
 }

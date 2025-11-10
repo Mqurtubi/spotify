@@ -1,11 +1,10 @@
 import Logo from "../ui/Logo";
 import { useDrawer } from "../../store/useDrawer";
 import { useEffect } from "react";
-import { IoHomeOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import menu from "./menu";
 export default function Sidebar() {
-  const { open, setOpen } = useDrawer();
+  const { open } = useDrawer();
   useEffect(() => {
     console.log(open);
   }, []);

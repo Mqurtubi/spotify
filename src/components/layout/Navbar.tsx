@@ -56,7 +56,7 @@ export default function Navbar() {
                 )}
               </div>
               <div
-                className={`absolute bg-slate-800 -left-14 mt-2 ${
+                className={`absolute bg-slate-800 -left-18 mt-2 ${
                   openProfile ? "block" : "hidden"
                 }`}
               >

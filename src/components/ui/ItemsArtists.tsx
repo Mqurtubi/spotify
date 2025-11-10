@@ -4,13 +4,13 @@ export default function ItemsArtist({ items }) {
   const genre = items.genres;
   return (
     <div className="bg-slate-800/50 border border-slate-700 rounded-2xl flex flex-col justify-center items-center w-full py-6 space-y-2 group px-3">
-      <div className="rounded-full overflow-hidden w-full relative">
+      <div className="rounded-full overflow-hidden w-48 relative">
         <img
           src={items.images[0].url}
           alt=""
           className="group-hover:scale-101 transition-all duration-300 opacity-100 group-hover:opacity-80"
         />
-        <div className="absolute bg-cyan-400 w-1/3 h-14 top-13 right-13  justify-center items-center rounded-full flex opacity-0 group-hover:opacity-100 transition-all duration-400">
+        <div className="absolute bg-cyan-400 p-5 h-14 top-17 right-16  justify-center items-center rounded-full flex opacity-0 group-hover:opacity-100 transition-all duration-400">
           <FaPlay className="text-lg" />
         </div>
       </div>
